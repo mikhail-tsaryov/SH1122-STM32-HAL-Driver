@@ -93,15 +93,10 @@ int main(void)
   // Init display
   Display_Init();
   //Display_SetOrienation(OLED_DISP_ROTATE180);
-  Frame_DrawRectangleFilled(80 + 2, 20 + 2, OLED_WIDTH - 80 + 2, OLED_HEIGHT - 20 + 2, Display_Color.Gray_03, Display_Color.Gray_02);
-  Frame_DrawRectangleFilled(80, 20, OLED_WIDTH - 80, OLED_HEIGHT - 20, Display_Color.Gray_06, Display_Color.Gray_10);
-  Frame_printf(OLED_WIDTH / 2, 32, FONTID_10X16F, Display_Color.Gray_00, CENTER, CENTER, "Button");
-  //Frame_printf(OLED_WIDTH / 2, 32, FONTID_16X26F, Display_Color.Gray_15, CENTER, CENTER, "Hello, world!");
+  
+  Frame_printf(OLED_WIDTH / 2, 32, FONTID_10X16F, Display_Color.Gray_15, CENTER, CENTER, "Hello, world!");
 
   Display_SendFrame();
-
-  //HAL_Delay(5000);
-  //SH1122_DisplayPower(OLED_POWER_OFF);
 
   /* USER CODE END 2 */
 
