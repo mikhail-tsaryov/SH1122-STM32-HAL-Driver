@@ -94,7 +94,9 @@ int main(void)
   Display_Init();
   //Display_SetOrienation(OLED_DISP_ROTATE180);
   
-  Frame_printf(OLED_WIDTH / 2, 32, FONTID_10X16F, Display_Color.Gray_15, CENTER, CENTER, "Hello, world!");
+  Frame_DrawRectangleFilled(0, 0, 255, 63, Display_Color.Gray_15, Display_Color.Gray_01);
+  //Frame_printf(OLED_WIDTH / 2, OLED_HEIGHT / 2, FONTID_10X16F, Display_Color.Gray_00, CENTER, CENTER, "Button");
+  //Frame_printf(OLED_WIDTH / 2, 32, FONTID_10X16F, Display_Color.Gray_15, CENTER, CENTER, "Hello, world!");
 
   Display_SendFrame();
 

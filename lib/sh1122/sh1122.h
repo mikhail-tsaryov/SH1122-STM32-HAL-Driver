@@ -57,31 +57,20 @@ extern struct Gray_16_Color Display_Color;
 
 // 1 and 2: Set Lower (00H - 0FH) and Higher (10H - 17H) Column Address of display RAM
 void SH1122_SetColumnAddress(uint8_t Value);
-// 3-5: Blank
 // 6: Set Display Start Line: (40H - 7FH)
 void SH1122_SetDisplayStartLine(uint8_t Value);
-// 7: Set Contrast Control Register: (Double Bytes Command)
+// 7: Set Contrast Control Register
 void SH1122_SetContrast(uint8_t Value);
 // 9: Set Entire Display OFF/ON: (A4H - A5H)
 void SH1122_EntireDisplay(uint8_t State);
 // 10: Set Normal/Reverse Display: (A6H - A7H)
 void SH1122_DisplayMode(uint8_t State);
-// 11: Set Multiplex Ration: (Double Bytes Command)
+// 11: Set Multiplex Ration
 void SH1122_SetMultiplexRation(uint8_t Value);
-// 12: DC-DC Setting: (Double Bytes Command)
-// Not implemented
-// 13:
+// 13: Display Power Control
 void SH1122_DisplayPower(uint8_t State);
-// 16: Set Display Offset: (Double Bytes Command)
+// 16: Set Display Offset
 void SH1122_SetDisplayOffset(uint8_t Value);
-// 17: Set Display Clock Divide Ratio/Oscillator Frequency: (Double Bytes Command)
-// Not implemented
-// 19: Set VCOM Deselect Level: (Double Bytes Command)
-// Not implemented
-// 20: Set VSEGM Level: (Double Bytes Command)
-// Not implemented
-// 21: Set Discharge VSL Level (30H - 3FH)
-// Not implemented
 // 25: Write Display Data
 void SH1122_WriteData(uint8_t *pData, uint32_t DataLen);
 

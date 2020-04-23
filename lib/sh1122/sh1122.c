@@ -136,7 +136,7 @@ void SH1122_SetDisplayOffset(uint8_t Value)
     uint8_t Cmd = 0xD3;
     SendDoubleByteCommand(Cmd, Value);
 }
-/*
+
 // 17: Set Display Clock Divide Ratio/Oscillator Frequency: (Double Bytes Command)
 static void SH1122_SetDisplayClock(uint8_t Divider, uint8_t Frequency)
 {
@@ -147,20 +147,27 @@ static void SH1122_SetDisplayClock(uint8_t Divider, uint8_t Frequency)
     uint8_t Value = (Frequency << 4) & Divider;
     SendDoubleByteCommand(Cmd, Value);
 }
-*/
-/*
+
 // 18: Set Discharge/Precharge Period: (Double Bytes Command)
 static void SH1122_SetDisPreChargePeriod(uint8_t Value)
 {
     uint8_t Cmd = 0xD9;
     SendDoubleByteCommand(Cmd, Value);
 }
-*/
+
 // 19: Set VCOM Deselect Level: (Double Bytes Command)
-// Not implemented
+void SH1122_VCOMDeselectLevel(uint8_t Value)
+{
+    uint8_t Cmd = 0xDB;
+    SendDoubleByteCommand(Cmd, Value);
+}
 
 // 20: Set VSEGM Level: (Double Bytes Command)
-// Not implemented
+void SH1122_VSEGMLevel(uint8_t Value)
+{
+    uint8_t Cmd = 0xDC;
+    SendDoubleByteCommand(Cmd, Value);
+}
 
 // 21: Set Discharge VSL Level (30H - 3FH)
 void SH1122_SetDischargeVSLLevel(uint8_t Value)
@@ -185,9 +192,9 @@ void SH1122_WriteData(uint8_t *pData, uint32_t DataLen)
 static void SH1122_Reset(void)
 {
     HAL_GPIO_WritePin(OLED_RES_GPIO_Port, OLED_RES_Pin, GPIO_PIN_RESET);
-    //HAL_Delay(1);
+    HAL_Delay(10);
     HAL_GPIO_WritePin(OLED_RES_GPIO_Port, OLED_RES_Pin, GPIO_PIN_SET);
-    //HAL_Delay(1);
+    HAL_Delay(10);
 }
 
 // Clear display internal RAM
@@ -217,8 +224,7 @@ void Display_Init(void)
 {
     SH1122_Reset();
 
-    // Set up initial user code
-    SH1122_SetContrast(0xFF);
+    // Write your custom initialization code here
 
     SH1122_ClearRAM();
     SH1122_DisplayPower(OLED_POWER_ON);
