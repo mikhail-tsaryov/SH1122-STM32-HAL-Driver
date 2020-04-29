@@ -385,23 +385,6 @@ uint8_t Frame_DrawChar(uint16_t X, uint16_t Y, uint8_t FontID, uint8_t Char, uin
             }
         }
     }
-    else if (FontID == FONTID_10X16F)
-    {
-        for (uint8_t row = 0; row < CharHeight; row++)
-        {
-            for (uint8_t col = 0; col < CharWidth; col++)
-            {
-                if (col < 8)
-                {
-                    if (pCharTable[row * 2] & (1 << (7 - col))) Frame_DrawPixel(X + col, Y + row, color);
-                }
-                else 
-                {
-                    if (pCharTable[row * 2 + 1] & (1 << (15 - col))) Frame_DrawPixel(X + col, Y + row, color);
-                }
-            }
-        }
-    }
     else
     {
         for (uint8_t row = 0; row < CharHeight; row++)
@@ -410,12 +393,12 @@ uint8_t Frame_DrawChar(uint16_t X, uint16_t Y, uint8_t FontID, uint8_t Char, uin
             {
                 if (col < 8)
                 {
-                    if (pCharTable[row * 2 + 1] & (1 << (7 - col)))
+                    if (pCharTable[row * 2] & (1 << (7 - col)))
                         Frame_DrawPixel(X + col, Y + row, color);
                 }
                 else
                 {
-                    if (pCharTable[row * 2] & (1 << (15 - col)))
+                    if (pCharTable[row * 2 + 1] & (1 << (15 - col)))
                         Frame_DrawPixel(X + col, Y + row, color);
                 }
             }
