@@ -92,49 +92,12 @@ int main(void)
 
   // Init display
   Display_Init();
-  //Display_SetOrienation(OLED_DISP_ROTATE180);
-
-  uint16_t X_start = OLED_WIDTH - 90;
-
-  // Names
-  Frame_printf(X_start / 2, OLED_HEIGHT / 4 - 2, FONTID_10X16F, Display_Color.Gray_15, CENTER, CENTER, "Компьютер");
-  Frame_printf(X_start / 2, 3 * OLED_HEIGHT / 4 + 2, FONTID_10X16F, Display_Color.Gray_15, CENTER, CENTER, "Усилитель\r\n\"Prometheus\"");
-
-  //Frame_DrawRectangle(X_start + 20, 0, OLED_WIDTH - 1, 63, Display_Color.Gray_01);
-
-  // Arrow
-  Frame_DrawLine(X_start, OLED_HEIGHT / 4 - 2, X_start + 15, OLED_HEIGHT / 4 - 2, Display_Color.Gray_15);
-  Frame_DrawLine(X_start, OLED_HEIGHT / 4 - 3, X_start + 15, OLED_HEIGHT / 4 - 3, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 9, OLED_HEIGHT / 4 - 3 - 6, X_start + 15, OLED_HEIGHT / 4 - 3, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 10, OLED_HEIGHT / 4 - 3 - 6, X_start + 16, OLED_HEIGHT / 4 - 3, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 9, OLED_HEIGHT / 4 - 2 + 6, X_start + 15, OLED_HEIGHT / 4 - 2, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 10, OLED_HEIGHT / 4 - 2 + 6, X_start + 16, OLED_HEIGHT / 4 - 2, Display_Color.Gray_15);
-  // Arrow
-  Frame_DrawLine(X_start, 3 * OLED_HEIGHT / 4 + 2, X_start + 15, 3 * OLED_HEIGHT / 4 + 2, Display_Color.Gray_15);
-  Frame_DrawLine(X_start, 3 * OLED_HEIGHT / 4 + 3, X_start + 15, 3 * OLED_HEIGHT / 4 + 3, Display_Color.Gray_15);
-  Frame_DrawLine(X_start, 3 * OLED_HEIGHT / 4 + 2, X_start + 6, 3 * OLED_HEIGHT / 4 + 2 - 6, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 1, 3 * OLED_HEIGHT / 4 + 2, X_start + 7, 3 * OLED_HEIGHT / 4 + 2 - 6, Display_Color.Gray_15);
-  Frame_DrawLine(X_start, 3 * OLED_HEIGHT / 4 + 3, X_start + 6, 3 * OLED_HEIGHT / 4 + 3 + 6, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 1, 3 * OLED_HEIGHT / 4 + 3, X_start + 7, 3 * OLED_HEIGHT / 4 + 3 + 6, Display_Color.Gray_15);
-
-  // Numbers
-  //Frame_DrawRectangle(X_start + 22, 0, X_start + 53, 27, Display_Color.Gray_15);
-  Frame_printf(X_start + 38, OLED_HEIGHT / 4 - 2, FONTID_24F, Display_Color.Gray_15, CENTER, CENTER, "20");
-
-  //Frame_DrawRectangle(X_start + 22, 3 * OLED_HEIGHT / 4 - 12, X_start + 53, 3 * OLED_HEIGHT / 4 + 15, Display_Color.Gray_15);
-  Frame_printf(X_start + 38, 3 * OLED_HEIGHT / 4 + 2, FONTID_24F, Display_Color.Gray_15, CENTER, CENTER, "12");
-
-  // Locked
-  Frame_printf(X_start + 80, OLED_HEIGHT / 2 + 1, FONTID_10X16F, Display_Color.Gray_15, CENTER, CENTER, "%c", 0x1F); // Lock symbol
-  
-  // Unmute
-  Frame_DrawLine(X_start + 54, OLED_HEIGHT / 4 - 2, X_start + 61, OLED_HEIGHT / 4 - 2, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 54, 3 * OLED_HEIGHT / 4 + 2, X_start + 61, 3 * OLED_HEIGHT / 4 + 2, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 62, OLED_HEIGHT / 4 - 1, X_start + 62, 3 * OLED_HEIGHT / 4 + 1, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 62 - 6, OLED_HEIGHT / 2 - 3, X_start + 62, OLED_HEIGHT / 2 + 3, Display_Color.Gray_15);
-  Frame_DrawLine(X_start + 62 + 6, OLED_HEIGHT / 2 - 3, X_start + 62, OLED_HEIGHT / 2 + 3, Display_Color.Gray_15);
-
-  
+  Display_SetOrienation(OLED_DISP_ROTATE180);
+  // Prepare frame
+  Frame_DrawRectangle(2, 2, OLED_WIDTH - 2, OLED_HEIGHT - 2, Display_Color.Gray_15);
+  Frame_printf(5, 5, FONTID_6X8M, Display_Color.Gray_03, LEFT, TOP, "Hello World! This is left top alignment");
+  Frame_printf(OLED_WIDTH / 2, OLED_HEIGHT / 2, FONTID_32F, Display_Color.Gray_05, CENTER, CENTER, "0123");
+  // Send frame to display
   Display_SendFrame();
 
   /* USER CODE END 2 */
@@ -229,4 +192,4 @@ void assert_failed(uint8_t *file, uint32_t line)
 }
 #endif /* USE_FULL_ASSERT */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/ 
